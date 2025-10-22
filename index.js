@@ -30,3 +30,14 @@ db.connect((err) => {
     console.log('Connected Succesfully');
 });
 
+app.get('/api/mahasiswa', (req, res) => {
+    db.query('SELECT * FROM biodata', (err, results) => {
+        if (err) {
+            console.error('Error excuting query:' + err.stack);
+            res.status(500).send('Error excuting query');
+            return;
+        }
+        res.json(results);
+    });
+});
+
